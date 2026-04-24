@@ -698,6 +698,13 @@ const cdiv=document.getElementById('cdiv');if(cdiv)cdiv.classList.remove('show')
 window.addEventListener('load',()=>{
   window.scrollTo(0,0);
   setTimeout(()=>{const l=document.getElementById('loader');if(l)l.classList.add('out');},1400);
+  // Autoplay voice on site open
+  const audio = new Audio('https://raw.githubusercontent.com/thevisionlibrary/The-Vision_Library/main/voice.mp3');
+  audio.volume = 1.0;
+  audio.play().catch(()=>{
+    document.addEventListener('click', ()=> audio.play(), {once: true});
+    document.addEventListener('touchstart', ()=> audio.play(), {once: true});
+  });
 });
 
 // ── Progress bar
