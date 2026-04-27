@@ -564,6 +564,59 @@ footer{background:#000;border-top:1px solid var(--border);padding:32px 5%;
 
 .particle{position:absolute;border-radius:50%;background:var(--gold);
   pointer-events:none;opacity:0;}
+/* ── LUDO ANIMATIONS ── */
+@keyframes ludoMove {
+  0%   { cx:12; cy:12; }
+  15%  { cx:19; cy:12; }
+  30%  { cx:19; cy:19; }
+  45%  { cx:28; cy:19; }
+  60%  { cx:28; cy:28; }
+  75%  { cx:19; cy:28; }
+  90%  { cx:12; cy:28; }
+  100% { cx:12; cy:12; }
+}
+@keyframes diceRoll {
+  0%,70%  { transform:rotate(0deg) scale(1); }
+  75%     { transform:rotate(15deg) scale(1.2); }
+  80%     { transform:rotate(-10deg) scale(1.1); }
+  85%     { transform:rotate(5deg) scale(1.15); }
+  90%,100%{ transform:rotate(0deg) scale(1); }
+}
+@keyframes diceDotFlash { 0%,65%,100%{opacity:1} 70%,80%{opacity:0} 85%{opacity:1} }
+@keyframes tokenGlow {
+  0%,100%{ filter:drop-shadow(0 0 2px #ff4444); }
+  50%    { filter:drop-shadow(0 0 7px #ff4444); }
+}
+.ludo-token { animation: ludoMove 4s steps(1) infinite, tokenGlow 1s ease-in-out infinite; }
+.ludo-dice  { animation: diceRoll 4s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
+.dice-dot1,.dice-dot2,.dice-dot3 { animation: diceDotFlash 4s ease-in-out infinite; }
+
+/* ── CHESS ANIMATIONS ── */
+@keyframes chessKingMove {
+  0%,40%  { transform:translateX(0); }
+  50%     { transform:translateX(11px); }
+  90%,100%{ transform:translateX(11px); }
+}
+@keyframes chessQueenThink {
+  0%,100%{ transform:translateY(0); }
+  30%    { transform:translateY(-3px); }
+  60%    { transform:translateY(-3px) translateX(-11px); }
+  90%    { transform:translateX(-11px); }
+}
+@keyframes chessMoveHint {
+  0%,40%{ opacity:0; r:2; }
+  50%,80%{ opacity:0.9; r:4; }
+  90%,100%{ opacity:0; r:2; }
+}
+@keyframes chessCheckFlash {
+  0%,45%,100%{ opacity:0; }
+  55%,85%    { opacity:0.3; }
+}
+.chess-wking  { animation: chessKingMove  5s ease-in-out infinite; transform-box:fill-box; transform-origin:11px 44px; }
+.chess-bqueen { animation: chessQueenThink 5s ease-in-out infinite; transform-box:fill-box; transform-origin:44px 44px; }
+.chess-move   { animation: chessMoveHint  5s ease-in-out infinite; }
+.chess-check  { animation: chessCheckFlash 5s ease-in-out infinite; }
+
 @keyframes audioPulse {
   0%,100%{ transform:scale(1);    box-shadow:0 4px 20px rgba(201,168,76,0.5); }
   50%    { transform:scale(1.15); box-shadow:0 4px 36px rgba(201,168,76,0.9); }
@@ -828,7 +881,7 @@ footer{background:#000;border-top:1px solid var(--border);padding:32px 5%;
   <div class="features-inner">
     <div class="features-header rv-up">
       <p class="sec-label">Why Choose Us</p>
-      <h2 class="sec-title">Everything a <em>Serious Student</em> Needs</h2>
+      <h2 class="sec-title">Everything a <em>Serious Student</em> Needs — & More!</h2>
     </div>
     <div class="feats-grid">
       <div class="feat rv-s d1">
@@ -1026,6 +1079,94 @@ footer{background:#000;border-top:1px solid var(--border);padding:32px 5%;
 </svg></div>
         <div class="feat-title">Flexible Shift Timings</div>
         <div class="feat-desc">Choose from multiple time slots — 4hr to Full Day. Night shift also available till 7 AM.</div>
+      </div>
+
+      <!-- LUDO -->
+      <div class="feat rv-s d1">
+        <div class="feat-num">07</div>
+        <div class="feat-icon">
+          <svg width="50" height="50" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+            <!-- Board outline -->
+            <rect x="4" y="4" width="48" height="48" rx="4" fill="#1a1a1a" stroke="#c9a84c" stroke-width="1.5"/>
+            <!-- 4 colored quadrants -->
+            <rect x="5"  y="5"  width="20" height="20" rx="3" fill="#ff4444" opacity="0.7"/>
+            <rect x="31" y="5"  width="20" height="20" rx="3" fill="#22c55e" opacity="0.7"/>
+            <rect x="5"  y="31" width="20" height="20" rx="3" fill="#3b82f6" opacity="0.7"/>
+            <rect x="31" y="31" width="20" height="20" rx="3" fill="#f59e0b" opacity="0.7"/>
+            <!-- Center safe zone -->
+            <rect x="21" y="21" width="14" height="14" rx="2" fill="#1a1a1a" stroke="#c9a84c" stroke-width="1"/>
+            <polygon points="28,23 34,34 22,34" fill="#c9a84c" opacity="0.6"/>
+            <!-- Home circles in quadrants -->
+            <circle cx="12" cy="12" r="4" fill="#1a1a1a" stroke="#ff6b6b" stroke-width="1.2"/>
+            <circle cx="19" cy="12" r="4" fill="#1a1a1a" stroke="#ff6b6b" stroke-width="1.2"/>
+            <circle cx="12" cy="19" r="4" fill="#1a1a1a" stroke="#ff6b6b" stroke-width="1.2"/>
+            <circle cx="19" cy="19" r="4" fill="#1a1a1a" stroke="#ff6b6b" stroke-width="1.2"/>
+            <circle cx="37" cy="12" r="4" fill="#1a1a1a" stroke="#4ade80" stroke-width="1.2"/>
+            <circle cx="44" cy="12" r="4" fill="#1a1a1a" stroke="#4ade80" stroke-width="1.2"/>
+            <circle cx="37" cy="19" r="4" fill="#1a1a1a" stroke="#4ade80" stroke-width="1.2"/>
+            <circle cx="44" cy="19" r="4" fill="#1a1a1a" stroke="#4ade80" stroke-width="1.2"/>
+            <!-- Animated token moving -->
+            <circle class="ludo-token" cx="12" cy="12" r="3.5" fill="#ff4444" stroke="#fff" stroke-width="1"/>
+            <!-- Dice -->
+            <rect class="ludo-dice" x="38" y="38" width="12" height="12" rx="2" fill="#fff" stroke="#c9a84c" stroke-width="1"/>
+            <circle class="dice-dot1" cx="42" cy="42" r="1.2" fill="#1a1a1a"/>
+            <circle class="dice-dot2" cx="46" cy="46" r="1.2" fill="#1a1a1a"/>
+            <circle class="dice-dot3" cx="46" cy="42" r="1.2" fill="#1a1a1a"/>
+          </svg>
+        </div>
+        <div class="feat-title">Ludo Corner</div>
+        <div class="feat-desc">Take a break and enjoy Ludo with fellow students. Refresh your mind between study sessions!</div>
+      </div>
+
+      <!-- CHESS -->
+      <div class="feat rv-s d2">
+        <div class="feat-num">08</div>
+        <div class="feat-icon">
+          <svg width="50" height="50" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+            <!-- Chess board -->
+            <rect x="4" y="8" width="48" height="44" rx="3" fill="#1a1a1a" stroke="#c9a84c" stroke-width="1.5"/>
+            <!-- Board squares 4x4 sample -->
+            <rect x="5"  y="9"  width="11" height="10" fill="#f0d9b5" opacity="0.85"/>
+            <rect x="16" y="9"  width="11" height="10" fill="#b58863" opacity="0.85"/>
+            <rect x="27" y="9"  width="11" height="10" fill="#f0d9b5" opacity="0.85"/>
+            <rect x="38" y="9"  width="13" height="10" fill="#b58863" opacity="0.85"/>
+            <rect x="5"  y="19" width="11" height="10" fill="#b58863" opacity="0.85"/>
+            <rect x="16" y="19" width="11" height="10" fill="#f0d9b5" opacity="0.85"/>
+            <rect x="27" y="19" width="11" height="10" fill="#b58863" opacity="0.85"/>
+            <rect x="38" y="19" width="13" height="10" fill="#f0d9b5" opacity="0.85"/>
+            <rect x="5"  y="29" width="11" height="10" fill="#f0d9b5" opacity="0.85"/>
+            <rect x="16" y="29" width="11" height="10" fill="#b58863" opacity="0.85"/>
+            <rect x="27" y="29" width="11" height="10" fill="#f0d9b5" opacity="0.85"/>
+            <rect x="38" y="29" width="13" height="10" fill="#b58863" opacity="0.85"/>
+            <rect x="5"  y="39" width="11" height="12" fill="#b58863" opacity="0.85"/>
+            <rect x="16" y="39" width="11" height="12" fill="#f0d9b5" opacity="0.85"/>
+            <rect x="27" y="39" width="11" height="12" fill="#b58863" opacity="0.85"/>
+            <rect x="38" y="39" width="13" height="12" fill="#f0d9b5" opacity="0.85"/>
+            <!-- White King piece -->
+            <g class="chess-wking">
+              <ellipse cx="11" cy="49" rx="5" ry="2" fill="rgba(255,255,255,0.3)"/>
+              <rect x="8" y="42" width="6" height="8" rx="1" fill="#f0f0f0" stroke="#ccc" stroke-width="0.5"/>
+              <rect x="9" y="39" width="4" height="4" rx="1" fill="#f0f0f0" stroke="#ccc" stroke-width="0.5"/>
+              <rect x="10" y="37" width="2" height="3" fill="#f0f0f0"/>
+              <rect x="9.5" y="37" width="3" height="1" fill="#f0f0f0"/>
+            </g>
+            <!-- Black Queen piece -->
+            <g class="chess-bqueen">
+              <ellipse cx="44" cy="49" rx="5" ry="2" fill="rgba(0,0,0,0.4)"/>
+              <rect x="41" y="42" width="6" height="8" rx="1" fill="#333" stroke="#555" stroke-width="0.5"/>
+              <rect x="42" y="39" width="4" height="4" rx="1" fill="#333"/>
+              <circle cx="44" cy="38" r="1.5" fill="#555"/>
+              <circle cx="41" cy="39" r="1" fill="#555"/>
+              <circle cx="47" cy="39" r="1" fill="#555"/>
+            </g>
+            <!-- Move indicator -->
+            <circle class="chess-move" cx="27" cy="24" r="3" fill="none" stroke="#4ade80" stroke-width="1.5" opacity="0"/>
+            <!-- Check highlight -->
+            <rect class="chess-check" x="5" y="9" width="11" height="10" fill="#ff4444" opacity="0" rx="1"/>
+          </svg>
+        </div>
+        <div class="feat-title">Chess Zone</div>
+        <div class="feat-desc">Sharpen your mind with Chess. Strategy games available for students during break time!</div>
       </div>
     </div>
   </div>
