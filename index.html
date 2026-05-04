@@ -234,15 +234,28 @@ nav.s{background:rgba(7,9,15,.94);backdrop-filter:blur(24px);padding:13px 6%;bor
 .cc-scan{animation:ccScan 3s ease-in-out infinite;}
 .cc-rec{animation:ccRec 1s ease-in-out infinite;}
 
-@keyframes clkS{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@keyframes clkM{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@keyframes clkH{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+@keyframes clkS{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes clkM{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes clkH{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+/* DAY/NIGHT SHIFT ANIMATION */
+@keyframes starTwinkle{0%,100%{opacity:.8;r:1}50%{opacity:.2;r:.5}}
+@keyframes moonCycle{0%,45%{transform:translateX(0);opacity:1}55%,100%{transform:translateX(60px);opacity:0}}
+@keyframes sunCycle{0%,45%{transform:translateX(-60px);opacity:0}55%,100%{transform:translateX(0);opacity:1}}
+@keyframes bgCycle{0%,45%{fill:#0a0a14}55%,100%{fill:#0d1a2e}}
+@keyframes winBlink{0%,40%,100%{opacity:1}50%,90%{opacity:.2}}
+@keyframes labelDay{0%,45%{opacity:1;transform:translateY(0)}55%,100%{opacity:0;transform:translateY(4px)}}
+@keyframes labelNight{0%,45%{opacity:0;transform:translateY(-4px)}55%,100%{opacity:1;transform:translateY(0)}}
+.shift-star{animation:starTwinkle 1.5s ease-in-out infinite;}
+.shift-moon-g{animation:moonCycle 6s ease-in-out infinite;transform-box:fill-box;}
+.shift-sun-g{animation:sunCycle 6s ease-in-out infinite;transform-box:fill-box;}
+.win-on{animation:winBlink 6s ease-in-out infinite;}
+.win-off{animation:winBlink 6s 3s ease-in-out infinite;}
+.shift-label-day{animation:labelDay 6s ease-in-out infinite;}
+.shift-label-night{animation:labelNight 6s ease-in-out infinite;}
+
 @keyframes clkRing{0%,100%{stroke:rgba(255,107,138,.2)}50%{stroke:rgba(255,107,138,.7);filter:drop-shadow(0 0 4px #ff6b8a)}}
 @keyframes sunG{0%,100%{opacity:.6}50%{opacity:1;filter:drop-shadow(0 0 6px #f5a623)}}
 @keyframes moonG{0%,100%{opacity:.5}50%{opacity:1;filter:drop-shadow(0 0 6px #a78bfa)}}
-.clk-sec{animation:clkS 1s linear infinite;transform-box:fill-box;transform-origin:27px 27px;}
-.clk-min{animation:clkM 4s linear infinite;transform-box:fill-box;transform-origin:27px 27px;}
-.clk-hr{animation:clkH 24s linear infinite;transform-box:fill-box;transform-origin:27px 27px;}
 .clk-ring{animation:clkRing 3s ease-in-out infinite;}
 .sun-ico{animation:sunG 2.5s ease-in-out infinite;}
 .moon-ico{animation:moonG 3s ease-in-out infinite;}
@@ -632,28 +645,52 @@ footer{background:var(--bg);border-top:1px solid var(--bdr);padding:32px 6%;disp
       <div class="fc-desc">24x7 CCTV surveillance for safety. Parking available for two-wheelers.</div>
     </div>
 
-    <!-- 06 Clock -->
+    <!-- 06 Shift Timings -->
     <div class="fc r rv-s d6">
       <div class="fc-num">06</div>
       <svg class="fc-svg" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg" overflow="visible">
-        <circle class="clk-ring" cx="27" cy="27" r="23" fill="none" stroke="rgba(255,107,138,.2)" stroke-width="1"/>
-        <circle cx="27" cy="27" r="20" fill="#0d1117" stroke="#ff6b8a" stroke-width="2"/>
-        <circle cx="27" cy="27" r="16" fill="none" stroke="rgba(255,107,138,.1)" stroke-width="1"/>
-        <line x1="27" y1="8" x2="27" y2="12" stroke="#ff8fa8" stroke-width="2" stroke-linecap="round"/>
-        <line x1="27" y1="42" x2="27" y2="46" stroke="#ff8fa8" stroke-width="2" stroke-linecap="round"/>
-        <line x1="8" y1="27" x2="12" y2="27" stroke="#ff8fa8" stroke-width="2" stroke-linecap="round"/>
-        <line x1="42" y1="27" x2="46" y2="27" stroke="#ff8fa8" stroke-width="2" stroke-linecap="round"/>
-        <line x1="14" y1="14" x2="16.8" y2="16.8" stroke="#ff6b8a" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
-        <line x1="40" y1="14" x2="37.2" y2="16.8" stroke="#ff6b8a" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
-        <line x1="14" y1="40" x2="16.8" y2="37.2" stroke="#ff6b8a" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
-        <line x1="40" y1="40" x2="37.2" y2="37.2" stroke="#ff6b8a" stroke-width="1.2" stroke-linecap="round" opacity=".6"/>
-        <line class="clk-hr" x1="27" y1="27" x2="27" y2="14" stroke="#ff8fa8" stroke-width="2.5" stroke-linecap="round"/>
-        <line class="clk-min" x1="27" y1="27" x2="39" y2="27" stroke="#ff6b8a" stroke-width="2" stroke-linecap="round"/>
-        <line class="clk-sec" x1="27" y1="27" x2="27" y2="11" stroke="#f5a623" stroke-width="1" stroke-linecap="round"/>
-        <circle cx="27" cy="27" r="2.8" fill="#ff8fa8"/>
-        <circle cx="27" cy="27" r="1.2" fill="#07090f"/>
-        <circle class="sun-ico" cx="46" cy="10" r="4.5" fill="none" stroke="#f5a623" stroke-width="1.5"/>
-        <path class="moon-ico" d="M10 8 Q16 12 10 18 Q6.5 12 10 8Z" fill="#a78bfa"/>
+        <!-- Background sky that cycles day/night -->
+        <rect x="2" y="2" width="50" height="50" rx="6" fill="#0d1117" stroke="#ff6b8a" stroke-width="1.2"/>
+        <!-- Stars (night) -->
+        <circle class="shift-star" cx="10" cy="10" r="1" fill="#fff" opacity=".8"/>
+        <circle class="shift-star" cx="20" cy="7"  r="1.2" fill="#fff" opacity=".9" style="animation-delay:.4s"/>
+        <circle class="shift-star" cx="35" cy="9"  r="1" fill="#fff" opacity=".7" style="animation-delay:.8s"/>
+        <circle class="shift-star" cx="44" cy="12" r="1.2" fill="#fff" opacity=".85" style="animation-delay:1.2s"/>
+        <circle class="shift-star" cx="14" cy="18" r=".8" fill="#fff" opacity=".6" style="animation-delay:.2s"/>
+        <circle class="shift-star" cx="42" cy="6"  r=".8" fill="#fff" opacity=".7" style="animation-delay:1.6s"/>
+        <!-- Moon -->
+        <g class="shift-moon-g">
+          <path d="M38 8 Q45 14 38 22 Q33 14 38 8Z" fill="#e8c97e" opacity=".95"/>
+        </g>
+        <!-- Sun -->
+        <g class="shift-sun-g">
+          <circle cx="16" cy="14" r="7" fill="#f5a623" opacity=".95"/>
+          <line x1="16" y1="4"  x2="16" y2="2"  stroke="#ffc654" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="16" y1="24" x2="16" y2="26" stroke="#ffc654" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="6"  y1="14" x2="4"  y2="14" stroke="#ffc654" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="26" y1="14" x2="28" y2="14" stroke="#ffc654" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="9"  y1="7"  x2="7.5" y2="5.5"  stroke="#ffc654" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="23" y1="7"  x2="24.5" y2="5.5"  stroke="#ffc654" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="9"  y1="21" x2="7.5" y2="22.5"  stroke="#ffc654" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="23" y1="21" x2="24.5" y2="22.5"  stroke="#ffc654" stroke-width="1.2" stroke-linecap="round"/>
+        </g>
+        <!-- Horizon line -->
+        <line x1="2" y1="32" x2="52" y2="32" stroke="rgba(255,107,138,.3)" stroke-width="1"/>
+        <!-- Ground / building silhouette -->
+        <rect x="2" y="32" width="50" height="20" rx="0 0 6 6" fill="#0a0a14"/>
+        <rect x="8"  y="26" width="8"  height="7" fill="#131820"/>
+        <rect x="20" y="28" width="6"  height="5" fill="#131820"/>
+        <rect x="38" y="24" width="10" height="9" fill="#131820"/>
+        <!-- Building windows -->
+        <rect class="win-on"  x="10" y="28" width="2" height="2" rx=".3" fill="#f5a623"/>
+        <rect class="win-off" x="13" y="28" width="2" height="2" rx=".3" fill="#333"/>
+        <rect class="win-on"  x="22" y="30" width="2" height="2" rx=".3" fill="#f5a623" style="animation-delay:.5s"/>
+        <rect class="win-off" x="40" y="26" width="2" height="2" rx=".3" fill="#333"/>
+        <rect class="win-on"  x="43" y="26" width="2" height="2" rx=".3" fill="#f5a623" style="animation-delay:1s"/>
+        <rect class="win-on"  x="40" y="29" width="2" height="2" rx=".3" fill="#f5a623" style="animation-delay:1.5s"/>
+        <!-- Time labels -->
+        <text class="shift-label-day"  x="27" y="48" text-anchor="middle" font-size="5.5" font-family="monospace" font-weight="bold" fill="#f5a623">6 AM – 11 PM</text>
+        <text class="shift-label-night" x="27" y="48" text-anchor="middle" font-size="5.5" font-family="monospace" font-weight="bold" fill="#a78bfa">11 PM – 7 AM</text>
       </svg>
       <div class="fc-title">Flexible Shift Timings</div>
       <div class="fc-desc">4hr to Full Day slots available. Night shift open till 7 AM.</div>
